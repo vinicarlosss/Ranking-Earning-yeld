@@ -6,7 +6,7 @@ function validaFaixaInteiro(pergunta, inicio, fim){
         if(inicio<= valor && valor <= fim){
             return(valor)
         }else{
-            console.log(`Valor inválido, favor digitar entre ${inicio} e ${fim}`);
+            console.log(`\nValor inválido, favor digitar entre ${inicio} e ${fim}\n`);
             continue
         };
     };
@@ -14,36 +14,35 @@ function validaFaixaInteiro(pergunta, inicio, fim){
 
 function menu(){
     console.log("\n ----Menu Principal----\nO que você deseja fazer?\n1 - Inserir Empresa\n2 - Atualizar Empresa\n3 - Excluir Empresa\n4 - Selecionar Empresa\n5 - Listar Empresas\n6 - Rankear ações mais baratas da bolsa\n0 - Sair\n");
-    return validaFaixaInteiro("Digite a opcao que voce deseja: ", 0, 6);
+    return validaFaixaInteiro("Digite a opcao que voce deseja: \n", 0, 6);
 };
 
 (async () => {
-    console.log("Começou!");
     while(true){
         escolha = menu();
         if (escolha == 0){
             break
         }else if(escolha == 1){
             
-            let ticker = readlineSync.question("\nDigite o ticker da empresa: ");
-            let nome_empresa = readlineSync.question("\nDigite o nome da empresa: ");
-            let ebit = Number(readlineSync.question("\nDigite o Ebit da empresa: "));
-            let valor_mercado = Number(readlineSync.question("\nDigite o valor de mercado da empresa: "));
-            let divida_liquida = Number(readlineSync.question("\nDigite o valor da divida líquida da empresa: "));
+            let ticker = readlineSync.question("\nDigite o ticker da empresa: \n");
+            let nome_empresa = readlineSync.question("\nDigite o nome da empresa: \n");
+            let ebit = Number(readlineSync.question("\nDigite o Ebit da empresa: \n"));
+            let valor_mercado = Number(readlineSync.question("\nDigite o valor de mercado da empresa: \n"));
+            let divida_liquida = Number(readlineSync.question("\nDigite o valor da divida líquida da empresa: \n"));
             await db.insertEmpresa({ticker: ticker, nome_empresa: nome_empresa, ebit: ebit, valor_mercado: valor_mercado, divida_liquida: divida_liquida});
         }else if(escolha == 2){
 
-            let ticker = readlineSync.question("\nDigite o ticker da empresa: ");
-            let nome_empresa = readlineSync.question("\nDigite o nome da empresa: ");
-            let ebit = Number(readlineSync.question("\nDigite o Ebit da empresa: "));
-            let valor_mercado = Number(readlineSync.question("\nDigite o valor de mercado da empresa: "));
-            let divida_liquida = Number(readlineSync.question("\nDigite o valor da divida líquida da empresa: "));
+            let ticker = readlineSync.question("\nDigite o ticker da empresa: \n");
+            let nome_empresa = readlineSync.question("\nDigite o nome da empresa: \n");
+            let ebit = Number(readlineSync.question("\nDigite o Ebit da empresa: \n"));
+            let valor_mercado = Number(readlineSync.question("\nDigite o valor de mercado da empresa: \n"));
+            let divida_liquida = Number(readlineSync.question("\nDigite o valor da divida líquida da empresa: \n"));
             await db.updateEmpresa(ticker,{nome_empresa: nome_empresa, ebit: ebit, valor_mercado: valor_mercado, divida_liquida: divida_liquida});
         }else if(escolha == 3){
 
-            await db.deleteEmpresa(readlineSync.question("\nDigite o ticker da empresa que deseja apagar do sitema: "));
+            await db.deleteEmpresa(readlineSync.question("\nDigite o ticker da empresa que deseja apagar do sitema: \n"));
         }else if(escolha == 4){
-            await db.selectEmpresa(readlineSync.question("\nDigite o ticker da empresa desejada: "));
+            await db.selectEmpresa(readlineSync.question("\nDigite o ticker da empresa desejada: \n"));
         }else if(escolha == 5){
             await db.listarEmpresas();
         }else if(escolha == 6){

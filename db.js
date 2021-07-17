@@ -7,7 +7,6 @@ async function connect(){
         return global.connection;
     const mysql = require("mysql2/promise");
     const connection = await mysql.createConnection("mysql://root:1998ronca@localhost:3306/formula_magica");
-    console.log("Conectou no MySQL");
     global.connection = connection;
     return connection
 }
@@ -62,6 +61,7 @@ async function listarEmpresas(){
 async function rankearEmpresas(){
     const conn = await connect();
     const[rows] = await conn.query('SELECT * FROM ranking ORDER BY earning_yeld DESC');
+    console.log("Esas são as empresas mais baratas da bolsa")
     return console.log(rows);
 }
 
