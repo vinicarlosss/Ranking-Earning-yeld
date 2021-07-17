@@ -1,6 +1,5 @@
 const readlineSync = require('readline-sync');
 const db = require("./db");
-console.log(typeof(empresas[0][2]));
 function validaFaixaInteiro(pergunta, inicio, fim){
     while(true){
         let valor = readlineSync.question(pergunta);
@@ -25,7 +24,12 @@ function menu(){
         if (escolha == 0){
             break
         }else if(escolha == 1){
-            await db.insertEmpresa(empresas);
+            let ticker = readlineSync.question("\nDigite o ticker da empresa: ");
+            let nome_empresa = readlineSync.question("\nDigite o nome da empresa: ");
+            let ebit = Number(readlineSync.question("\nDigite o Ebit da empresa: "));
+            let valor_mercado = Number(readlineSync.question("\nDigite o valor de mercado da empresa: "));
+            let divida_liquida = Number(readlineSync.question("\nDigite o valor da divida líquida da empresa: "));
+            await db.insertEmpresa({ticker: ticker, nome_empresa: nome_empresa, ebit: ebit, valor_mercado: valor_mercado, divida_liquida: divida_liquida});
         }else if(escolha == 2){
             console.log("\n2");
         }else if(escolha == 3){

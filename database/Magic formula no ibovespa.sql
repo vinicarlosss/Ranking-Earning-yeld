@@ -5,9 +5,9 @@ use formula_magica;
 create table Empresa(
 	ticker varchar(10) not null,
     nome_empresa varchar(45),
-	ebit decimal not null,
-    valor_mercado decimal not null,
-    divida_liquida decimal not null,
+	ebit double not null,
+    valor_mercado double not null,
+    divida_liquida double not null,
     primary key(ticker));
 
 create table ranking(

@@ -19,9 +19,10 @@ async function selectEmpresa(empresa){
     const [rows] = await conn.query(sql,values);
     if(rows.length > 0){
         console.log("\n");
+        console.log("OBS: Valores em milhões de reais");
         return console.log(rows)
     }else{
-        return console.log(`\nNão foi encontrada nenhuma empresa com o ticker ${empresa}`);
+        return console.log(`\nOps! Não foi encontrada nenhuma empresa com o ticker ${empresa}.`);
     };
 }
 
