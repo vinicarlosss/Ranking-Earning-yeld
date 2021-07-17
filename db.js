@@ -59,5 +59,10 @@ async function listarEmpresas(){
     const [rows] = await conn.query('SELECT * FROM empresa;');
     return console.log(rows);
 }
+async function rankearEmpresas(){
+    const conn = await connect();
+    const[rows] = await conn.query('SELECT * FROM ranking ORDER BY earning_yeld DESC');
+    return console.log(rows);
+}
 
-module.exports = {selectEmpresa, insertEmpresa,updateEmpresa, deleteEmpresa, listarEmpresas}
+module.exports = {selectEmpresa, insertEmpresa,updateEmpresa, deleteEmpresa, listarEmpresas, rankearEmpresas}
