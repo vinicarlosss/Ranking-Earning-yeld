@@ -42,6 +42,10 @@ async function updateEmpresa(ticker, empresa){
     const sql = 'UPDATE empresa SET nome_empresa = ?, ebit=?,valor_mercado=?,divida_liquida=? WHERE ticker=?';
     const values =  [empresa.nome_empresa,empresa.ebit,empresa.valor_mercado, empresa.divida_liquida, ticker];
     await conn.query(sql,values);
+    const ey = calculaEarningYeld(empresa.ebit, empresa.valor_mercado, empresa.divida_liquida);
+    const sql2 = 'UPDATE ranking SET earning_yeld = ? WHERE ticker=?;';
+    const values2 = [ey, ticker];
+    await conn.query(sql2,values2);
 }
 
 async function deleteEmpresa(ticker){
@@ -50,4 +54,10 @@ async function deleteEmpresa(ticker){
     await conn.query(sql,[ticker]);
 }
 
-module.exports = {selectEmpresa, insertEmpresa,updateEmpresa, deleteEmpresa}
+async function listarEmpresas(){
+    const conn = await connect();
+    const [rows] = await conn.query('SELECT * FROM empresa;');
+    return console.log(rows);
+}
+
+module.exports = {selectEmpresa, insertEmpresa,updateEmpresa, deleteEmpresa, listarEmpresas}
