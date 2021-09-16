@@ -164,7 +164,7 @@ function validaFaixaInteiro(pergunta, inicio, fim){
 };
 
 function menu(){
-    console.log("\n ----Menu Principal----\nO que você deseja fazer?\n1 - Inserir Empresa\n2 - Atualizar Empresa\n3 - Excluir Empresa\n4 - Selecionar Empresa\n5 - Listar Empresas\n6 - Rankear ações mais baratas da bolsa\n7 - Top 10 ações mais baratas\n0 - Sair\n");
+    console.log("\n ----Menu Principal----\nO que você deseja fazer?\n1 - Inserir Empresa\n2 - Atualizar Empresas\n3 - Excluir Empresa\n4 - Selecionar Empresa\n5 - Listar Empresas\n6 - Rankear ações mais baratas da bolsa\n7 - Top 10 ações mais baratas\n0 - Sair\n");
     return validaFaixaInteiro("Digite a opcao que voce deseja: \n", 0, 7);
 };
 
